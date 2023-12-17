@@ -8,18 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7802B29B090000A724B /* AppDelegate.swift */; };
-		CEDDC7852B29B090000A724B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7842B29B090000A724B /* ViewController.swift */; };
+		CEDDC7852B29B090000A724B /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7842B29B090000A724B /* NotesListViewController.swift */; };
 		CEDDC78A2B29B091000A724B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDDC7892B29B091000A724B /* Assets.xcassets */; };
 		CEDDC78D2B29B091000A724B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDDC78B2B29B091000A724B /* LaunchScreen.storyboard */; };
+		CEDDC7952B29C12C000A724B /* SimpleNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7942B29C12C000A724B /* SimpleNoteTableViewCell.swift */; };
+		CEDDC7972B29C146000A724B /* ImageNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7962B29C146000A724B /* ImageNoteTableViewCell.swift */; };
+		CEDDC79A2B29C688000A724B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7992B29C688000A724B /* SnapKit */; };
+		CEDDC79C2B29C688000A724B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC79B2B29C688000A724B /* SnapKit-Dynamic */; };
+		CEDDC7A22B29E3D8000A724B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7A12B29E3D8000A724B /* Note.swift */; };
+		CEDDC7A82B29F7AF000A724B /* NotesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7A72B29F7AF000A724B /* NotesListViewModel.swift */; };
+		CEDDC7AA2B2A035E000A724B /* TableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7A92B2A035E000A724B /* TableViewSection.swift */; };
+		CEDDC7AC2B2A1DF2000A724B /* UIColor + Extens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */; };
+		CEDDC7AF2B2B2E86000A724B /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */; };
+		CEDDC7B12B2B2E9B000A724B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7B02B2B2E9B000A724B /* SnapKit */; };
+		CEDDC7B32B2B2E9B000A724B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7B22B2B2E9B000A724B /* SnapKit-Dynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CEDDC77D2B29B090000A724B /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDDC7802B29B090000A724B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEDDC7842B29B090000A724B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CEDDC7842B29B090000A724B /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
 		CEDDC7892B29B091000A724B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEDDC78C2B29B091000A724B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEDDC78E2B29B091000A724B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEDDC7942B29C12C000A724B /* SimpleNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNoteTableViewCell.swift; sourceTree = "<group>"; };
+		CEDDC7962B29C146000A724B /* ImageNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNoteTableViewCell.swift; sourceTree = "<group>"; };
+		CEDDC7A12B29E3D8000A724B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		CEDDC7A72B29F7AF000A724B /* NotesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewModel.swift; sourceTree = "<group>"; };
+		CEDDC7A92B2A035E000A724B /* TableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSection.swift; sourceTree = "<group>"; };
+		CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extens.swift"; sourceTree = "<group>"; };
+		CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +45,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEDDC7B12B2B2E9B000A724B /* SnapKit in Frameworks */,
+				CEDDC79A2B29C688000A724B /* SnapKit in Frameworks */,
+				CEDDC79C2B29C688000A724B /* SnapKit-Dynamic in Frameworks */,
+				CEDDC7B32B2B2E9B000A724B /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,12 +75,75 @@
 			isa = PBXGroup;
 			children = (
 				CEDDC7802B29B090000A724B /* AppDelegate.swift */,
-				CEDDC7842B29B090000A724B /* ViewController.swift */,
+				CEDDC7A92B2A035E000A724B /* TableViewSection.swift */,
+				CEDDC7B42B2B2ED8000A724B /* Note */,
+				CEDDC7A62B29E4B2000A724B /* NotesList */,
+				CEDDC7AD2B2A1DF6000A724B /* Extension */,
 				CEDDC7892B29B091000A724B /* Assets.xcassets */,
 				CEDDC78B2B29B091000A724B /* LaunchScreen.storyboard */,
 				CEDDC78E2B29B091000A724B /* Info.plist */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		CEDDC7A32B29E3E7000A724B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7A12B29E3D8000A724B /* Note.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CEDDC7A42B29E3F9000A724B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7842B29B090000A724B /* NotesListViewController.swift */,
+				CEDDC7942B29C12C000A724B /* SimpleNoteTableViewCell.swift */,
+				CEDDC7962B29C146000A724B /* ImageNoteTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CEDDC7A52B29E494000A724B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7A72B29F7AF000A724B /* NotesListViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		CEDDC7A62B29E4B2000A724B /* NotesList */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7A52B29E494000A724B /* ViewModel */,
+				CEDDC7A32B29E3E7000A724B /* Model */,
+				CEDDC7A42B29E3F9000A724B /* View */,
+			);
+			name = NotesList;
+			sourceTree = "<group>";
+		};
+		CEDDC7AD2B2A1DF6000A724B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		CEDDC7B42B2B2ED8000A724B /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7B52B2B338C000A724B /* View */,
+			);
+			name = Note;
+			sourceTree = "<group>";
+		};
+		CEDDC7B52B2B338C000A724B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +162,12 @@
 			dependencies = (
 			);
 			name = Notes;
+			packageProductDependencies = (
+				CEDDC7992B29C688000A724B /* SnapKit */,
+				CEDDC79B2B29C688000A724B /* SnapKit-Dynamic */,
+				CEDDC7B02B2B2E9B000A724B /* SnapKit */,
+				CEDDC7B22B2B2E9B000A724B /* SnapKit-Dynamic */,
+			);
 			productName = Notes;
 			productReference = CEDDC77D2B29B090000A724B /* Notes.app */;
 			productType = "com.apple.product-type.application";
@@ -105,6 +196,9 @@
 				Base,
 			);
 			mainGroup = CEDDC7742B29B090000A724B;
+			packageReferences = (
+				CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = CEDDC77E2B29B090000A724B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -131,8 +225,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDDC7852B29B090000A724B /* ViewController.swift in Sources */,
+				CEDDC7AC2B2A1DF2000A724B /* UIColor + Extens.swift in Sources */,
+				CEDDC7AA2B2A035E000A724B /* TableViewSection.swift in Sources */,
+				CEDDC7A22B29E3D8000A724B /* Note.swift in Sources */,
+				CEDDC7852B29B090000A724B /* NotesListViewController.swift in Sources */,
+				CEDDC7AF2B2B2E86000A724B /* NoteViewController.swift in Sources */,
 				CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */,
+				CEDDC7952B29C12C000A724B /* SimpleNoteTableViewCell.swift in Sources */,
+				CEDDC7972B29C146000A724B /* ImageNoteTableViewCell.swift in Sources */,
+				CEDDC7A82B29F7AF000A724B /* NotesListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +256,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -218,6 +320,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -343,6 +446,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CEDDC7992B29C688000A724B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		CEDDC79B2B29C688000A724B /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		CEDDC7B02B2B2E9B000A724B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		CEDDC7B22B2B2E9B000A724B /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CEDDC7752B29B090000A724B /* Project object */;
 }

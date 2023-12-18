@@ -10,6 +10,23 @@ import SnapKit
 
 final class NoteViewController: UIViewController {
     
+    enum ColorCategory: String {
+        case green, blue, yellow, red
+        
+        var color: UIColor {
+            switch self {
+            case .green:
+                UIColor.lightGreen
+            case .blue:
+                UIColor.lightBlue
+            case .yellow:
+                UIColor.lightYellow
+            case.red:
+                UIColor.lightRed
+            }
+        }
+    }
+    
     // MARK: - GUI Variables
     private lazy var attachmentView: UIImageView = {
         let view = UIImageView()
@@ -27,7 +44,7 @@ final class NoteViewController: UIViewController {
         
         view.layer.cornerRadius = 10
         view.layer.borderColor = UIColor.lightGray.cgColor
-
+        
         return view
     }()
     
@@ -63,12 +80,44 @@ final class NoteViewController: UIViewController {
         
     }
     
+    @objc private func showColors() {
+        // Create alert
+        let alert = UIAlertController(title: "Category by color",
+                                      message: "Choose the color of your note",
+                                      preferredStyle: .actionSheet)
+        // Add actions
+        let redAction = makeAction(title: "Red", color: UIColor.lightRed)
+        let blueAction = makeAction(title: "Blue", color: UIColor.lightBlue)
+        let yellowAction = makeAction(title: "Yellow", color: UIColor.lightYellow)
+        let greenAction = makeAction(title: "Green", color: .lightGreen)
+        let whiteAction = makeAction(title: "Default", color: .white)
+        
+        alert.addActions(actions: [redAction, blueAction, yellowAction, greenAction, whiteAction])
+        
+        present(alert, animated: true)
+    }
+    
+    private func makeAction(title: String, color: UIColor) -> UIAlertAction {
+        let circle = UIImage(systemName: "circle.fill")
+        
+        let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+            self?.view.backgroundColor = color
+            
+        }
+        
+        action.setValue(circle,
+                        forKey: "image")
+        action.setValue(color,
+                        forKey: "imageTintColor")
+        return action
+    }
+    
     private func setupUI() {
         view.addSubview(attachmentView)
         view.addSubview(textView)
         view.backgroundColor = .white
         let recognizer = UITapGestureRecognizer(target: self,
-                                             action: #selector(hideKeyboard))
+                                                action: #selector(hideKeyboard))
         view.addGestureRecognizer(recognizer)
         
         textView.layer.borderWidth = textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 1 : 0
@@ -101,12 +150,20 @@ final class NoteViewController: UIViewController {
     }
     
     private func setupBars() {
+        let imageCircle = UIImage(systemName: "circle.fill") ?? .add
+        
+        let button = UIButton(type: .custom)
+        button.setImage(imageCircle, for: .normal)
+        button.tintColor = .red
+        button.addTarget(self, action: #selector(showColors), for: .touchUpInside)
+        
+        let circle = UIBarButtonItem(customView: button)
+        let spacing = UIBarButtonItem(systemItem: .flexibleSpace)
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash,
                                           target: self,
                                           action: #selector(deleteAction))
-        setToolbarItems([trashButton],
+        setToolbarItems([trashButton, spacing, circle],
                         animated: true)
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
                                                             target: self,
                                                             action: #selector(saveAction))

@@ -5,7 +5,7 @@
 //  Created by User on 13.12.2023.
 //
 
-import Foundation
+import UIKit
 
 struct Note: TableViewItemProtocol {
     let title: String
@@ -13,5 +13,6 @@ struct Note: TableViewItemProtocol {
     let date: Date
     let imageURL: String?
     let image: Data?
+//    let category: UIColor
     
 }

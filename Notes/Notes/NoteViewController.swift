@@ -11,7 +11,7 @@ import SnapKit
 final class NoteViewController: UIViewController {
     
     enum ColorCategory: String {
-        case green, blue, yellow, red
+        case green, blue, yellow, red, white
         
         var color: UIColor {
             switch self {
@@ -23,6 +23,8 @@ final class NoteViewController: UIViewController {
                 UIColor.lightYellow
             case.red:
                 UIColor.lightRed
+            case .white:
+                UIColor.white
             }
         }
     }
@@ -47,6 +49,9 @@ final class NoteViewController: UIViewController {
         
         return view
     }()
+    
+    // MARK: - Properties
+    var selectedColor: ColorCategory = .blue
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -86,28 +91,32 @@ final class NoteViewController: UIViewController {
                                       message: "Choose the color of your note",
                                       preferredStyle: .actionSheet)
         // Add actions
-        let redAction = makeAction(title: "Red", color: UIColor.lightRed)
-        let blueAction = makeAction(title: "Blue", color: UIColor.lightBlue)
-        let yellowAction = makeAction(title: "Yellow", color: UIColor.lightYellow)
-        let greenAction = makeAction(title: "Green", color: .lightGreen)
-        let whiteAction = makeAction(title: "Default", color: .white)
+        let redAction = makeAction(title: "Red", category: .red)
+        let blueAction = makeAction(title: "Blue", category: .blue)
+        let yellowAction = makeAction(title: "Yellow", category: .yellow)
+        let greenAction = makeAction(title: "Green", category: .green)
+        let whiteAction = makeAction(title: "Default", category: .white)
         
         alert.addActions(actions: [redAction, blueAction, yellowAction, greenAction, whiteAction])
         
         present(alert, animated: true)
     }
     
-    private func makeAction(title: String, color: UIColor) -> UIAlertAction {
+    private func makeAction(title: String, category: ColorCategory) -> UIAlertAction {
+        let colorCategory = {
+            return category.color
+        }()
+        
         let circle = UIImage(systemName: "circle.fill")
         
         let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
-            self?.view.backgroundColor = color
+            self?.view.backgroundColor = colorCategory
             
         }
         
         action.setValue(circle,
                         forKey: "image")
-        action.setValue(color,
+        action.setValue(colorCategory,
                         forKey: "imageTintColor")
         return action
     }

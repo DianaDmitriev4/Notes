@@ -5,8 +5,8 @@
 //  Created by User on 13.12.2023.
 //
 
-import SnapKit
 import UIKit
+import SnapKit
 
 final class SimpleNoteTableViewCell: UITableViewCell {
     
@@ -45,6 +45,7 @@ final class SimpleNoteTableViewCell: UITableViewCell {
     // MARK: - Methods
     func set(note: Note) {
         titleLabel.text = note.title
+        containerView.backgroundColor = note.getCategory()
     }
     
     // MARK: - Private methods

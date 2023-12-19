@@ -10,7 +10,7 @@ import SnapKit
 
 final class NoteViewController: UIViewController {
     
-    enum ColorCategory: String {
+    enum ColorCategory: String, CaseIterable {
         case green, blue, yellow, red, white
         
         var color: UIColor {
@@ -51,7 +51,7 @@ final class NoteViewController: UIViewController {
     }()
     
     // MARK: - Properties
-    var selectedColor: ColorCategory = .blue
+     var selectedColor: ColorCategory = .blue
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -106,18 +106,32 @@ final class NoteViewController: UIViewController {
         let colorCategory = {
             return category.color
         }()
-        
+        // Get system image
         let circle = UIImage(systemName: "circle.fill")
-        
+        // Create action
         let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
             self?.view.backgroundColor = colorCategory
-            
+            // Set case for selectedColor from UIColor
+            self?.selectedColor = {
+                switch colorCategory {
+                case .green:
+                        .green
+                case .blue:
+                        .blue
+                case .yellow:
+                        .yellow
+                case .red:
+                        .red
+                case .white:
+                        .white
+                default:
+                        .white
+                }
+            }()
         }
-        
-        action.setValue(circle,
-                        forKey: "image")
-        action.setValue(colorCategory,
-                        forKey: "imageTintColor")
+        // Set
+        action.setValue(circle, forKey: "image")
+        action.setValue(colorCategory, forKey: "imageTintColor")
         return action
     }
     

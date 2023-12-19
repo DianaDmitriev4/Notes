@@ -41,7 +41,6 @@ final class NotesListViewModel: NotesListViewModelProtocol {
                                                     date: Date(),
                                                     imageURL: nil,
                                                     image: nil)
-                                               
                                        ])
         self.section = [section]
     }

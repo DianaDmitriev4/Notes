@@ -13,6 +13,10 @@ struct Note: TableViewItemProtocol {
     let date: Date
     let imageURL: String?
     let image: Data?
-//    let category: UIColor
     
+    func getCategory() -> UIColor {
+        let noteVC = NoteViewController()
+        let select = noteVC.selectedColor.color
+        return select
+    }
 }

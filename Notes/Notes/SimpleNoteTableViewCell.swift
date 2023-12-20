@@ -45,7 +45,7 @@ final class SimpleNoteTableViewCell: UITableViewCell {
     // MARK: - Methods
     func set(note: Note) {
         titleLabel.text = note.title
-        containerView.backgroundColor = note.getCategory()
+//        containerView.backgroundColor = note.getCategory()
     }
     
     // MARK: - Private methods

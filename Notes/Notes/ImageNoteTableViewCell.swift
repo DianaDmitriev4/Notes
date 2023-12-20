@@ -59,7 +59,7 @@ final class ImageNoteTableViewCell: UITableViewCell {
         guard let imageData = note.image,
               let image = UIImage(data: imageData) else { return }
         attachmentView.image = image
-        containerView.backgroundColor = note.getCategory()
+//        containerView.backgroundColor = note.getCategory()
     }
     
     // MARK: - Private methods

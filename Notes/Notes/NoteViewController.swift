@@ -8,26 +8,26 @@
 import UIKit
 import SnapKit
 
-final class NoteViewController: UIViewController {
+enum ColorCategory: String {
+    case green, blue, yellow, red, white
     
-    enum ColorCategory: String, CaseIterable {
-        case green, blue, yellow, red, white
-        
-        var color: UIColor {
-            switch self {
-            case .green:
-                UIColor.lightGreen
-            case .blue:
-                UIColor.lightBlue
-            case .yellow:
-                UIColor.lightYellow
-            case.red:
-                UIColor.lightRed
-            case .white:
-                UIColor.white
-            }
+    var color: UIColor {
+        switch self {
+        case .green:
+            UIColor.lightGreen
+        case .blue:
+            UIColor.lightBlue
+        case .yellow:
+            UIColor.lightYellow
+        case.red:
+            UIColor.lightRed
+        case .white:
+            UIColor.white
         }
     }
+}
+
+final class NoteViewController: UIViewController {
     
     // MARK: - GUI Variables
     private lazy var attachmentView: UIImageView = {

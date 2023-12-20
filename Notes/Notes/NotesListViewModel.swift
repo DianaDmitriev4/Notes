@@ -15,7 +15,6 @@ final class NotesListViewModel: NotesListViewModelProtocol {
     
     // MARK: - Properties
     private(set) var section: [TableViewSection] = []
-    private let noteColors: NoteViewController.ColorCategory = .blue
     
     // MARK: - Initialization
     init() {
@@ -34,13 +33,13 @@ final class NotesListViewModel: NotesListViewModelProtocol {
                                                     description: "First note description",
                                                     date: Date(),
                                                     imageURL: nil,
-                                                    image: nil),
+                                                    image: nil, category: nil),
                                                
                                                Note(title: "Second note",
                                                     description: "Second note description",
                                                     date: Date(),
                                                     imageURL: nil,
-                                                    image: nil)
+                                                    image: nil, category: nil)
                                        ])
         self.section = [section]
     }

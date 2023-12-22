@@ -27,6 +27,7 @@
 		CEDDC7BD2B2FF3F3000A724B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7BC2B2FF3F3000A724B /* SnapKit */; };
 		CEDDC7BF2B2FF3F3000A724B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7BE2B2FF3F3000A724B /* SnapKit-Dynamic */; };
 		CEDDC7C12B305E29000A724B /* UIAlertControl + Extens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7C02B305E29000A724B /* UIAlertControl + Extens.swift */; };
+		CEDDC7C52B3324F9000A724B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7C32B3324F9000A724B /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extens.swift"; sourceTree = "<group>"; };
 		CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		CEDDC7C02B305E29000A724B /* UIAlertControl + Extens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertControl + Extens.swift"; sourceTree = "<group>"; };
+		CEDDC7C42B3324F9000A724B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE27DB902B35CDA50049C69C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE27DB922B35CE1D0049C69C /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				CE27DB902B35CDA50049C69C /* View */,
+			);
+			name = Note;
+			sourceTree = "<group>";
+		};
 		CEDDC7742B29B090000A724B = {
 			isa = PBXGroup;
 			children = (
@@ -86,9 +104,10 @@
 			children = (
 				CEDDC7802B29B090000A724B /* AppDelegate.swift */,
 				CEDDC7A92B2A035E000A724B /* TableViewSection.swift */,
-				CEDDC7B42B2B2ED8000A724B /* Note */,
+				CE27DB922B35CE1D0049C69C /* Note */,
 				CEDDC7A62B29E4B2000A724B /* NotesList */,
 				CEDDC7AD2B2A1DF6000A724B /* Extension */,
+				CEDDC7C22B3309B7000A724B /* CoreData */,
 				CEDDC7892B29B091000A724B /* Assets.xcassets */,
 				CEDDC78B2B29B091000A724B /* LaunchScreen.storyboard */,
 				CEDDC78E2B29B091000A724B /* Info.plist */,
@@ -141,20 +160,12 @@
 			name = Extension;
 			sourceTree = "<group>";
 		};
-		CEDDC7B42B2B2ED8000A724B /* Note */ = {
+		CEDDC7C22B3309B7000A724B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				CEDDC7B52B2B338C000A724B /* View */,
+				CEDDC7C32B3324F9000A724B /* Model.xcdatamodeld */,
 			);
-			name = Note;
-			sourceTree = "<group>";
-		};
-		CEDDC7B52B2B338C000A724B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */,
-			);
-			name = View;
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +260,7 @@
 				CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */,
 				CEDDC7952B29C12C000A724B /* SimpleNoteTableViewCell.swift in Sources */,
 				CEDDC7972B29C146000A724B /* ImageNoteTableViewCell.swift in Sources */,
+				CEDDC7C52B3324F9000A724B /* Model.xcdatamodeld in Sources */,
 				CEDDC7A82B29F7AF000A724B /* NotesListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +528,19 @@
 			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		CEDDC7C32B3324F9000A724B /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CEDDC7C42B3324F9000A724B /* Model.xcdatamodel */,
+			);
+			currentVersion = CEDDC7C42B3324F9000A724B /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CEDDC7752B29B090000A724B /* Project object */;
 }

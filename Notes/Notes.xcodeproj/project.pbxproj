@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE8E56372B35D52D00338D87 /* NoteEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56352B35D52D00338D87 /* NoteEntity+CoreDataClass.swift */; };
+		CE8E56382B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56362B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift */; };
 		CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7802B29B090000A724B /* AppDelegate.swift */; };
 		CEDDC7852B29B090000A724B /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7842B29B090000A724B /* NotesListViewController.swift */; };
 		CEDDC78A2B29B091000A724B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDDC7892B29B091000A724B /* Assets.xcassets */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE8E56352B35D52D00338D87 /* NoteEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CE8E56362B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CEDDC77D2B29B090000A724B /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDDC7802B29B090000A724B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEDDC7842B29B090000A724B /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
@@ -75,12 +79,32 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		CE27DB922B35CE1D0049C69C /* Note */ = {
+		CE8E56342B35D50D00338D87 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E56352B35D52D00338D87 /* NoteEntity+CoreDataClass.swift */,
+				CE8E56362B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift */,
+				CEDDC7C32B3324F9000A724B /* Model.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		CE8E56392B36AEAF00338D87 /* NotesList */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7A32B29E3E7000A724B /* Model */,
+				CEDDC7A42B29E3F9000A724B /* View */,
+				CEDDC7A52B29E494000A724B /* ViewModel */,
+			);
+			path = NotesList;
+			sourceTree = "<group>";
+		};
+		CE8E563E2B36B07100338D87 /* Note */ = {
 			isa = PBXGroup;
 			children = (
 				CE27DB902B35CDA50049C69C /* View */,
 			);
-			name = Note;
+			path = Note;
 			sourceTree = "<group>";
 		};
 		CEDDC7742B29B090000A724B = {
@@ -104,10 +128,10 @@
 			children = (
 				CEDDC7802B29B090000A724B /* AppDelegate.swift */,
 				CEDDC7A92B2A035E000A724B /* TableViewSection.swift */,
-				CE27DB922B35CE1D0049C69C /* Note */,
-				CEDDC7A62B29E4B2000A724B /* NotesList */,
+				CE8E563E2B36B07100338D87 /* Note */,
+				CE8E56392B36AEAF00338D87 /* NotesList */,
 				CEDDC7AD2B2A1DF6000A724B /* Extension */,
-				CEDDC7C22B3309B7000A724B /* CoreData */,
+				CE8E56342B35D50D00338D87 /* CoreData */,
 				CEDDC7892B29B091000A724B /* Assets.xcassets */,
 				CEDDC78B2B29B091000A724B /* LaunchScreen.storyboard */,
 				CEDDC78E2B29B091000A724B /* Info.plist */,
@@ -121,6 +145,7 @@
 				CEDDC7A12B29E3D8000A724B /* Note.swift */,
 			);
 			name = Model;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		CEDDC7A42B29E3F9000A724B /* View */ = {
@@ -131,6 +156,7 @@
 				CEDDC7962B29C146000A724B /* ImageNoteTableViewCell.swift */,
 			);
 			name = View;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		CEDDC7A52B29E494000A724B /* ViewModel */ = {
@@ -139,16 +165,7 @@
 				CEDDC7A72B29F7AF000A724B /* NotesListViewModel.swift */,
 			);
 			name = ViewModel;
-			sourceTree = "<group>";
-		};
-		CEDDC7A62B29E4B2000A724B /* NotesList */ = {
-			isa = PBXGroup;
-			children = (
-				CEDDC7A52B29E494000A724B /* ViewModel */,
-				CEDDC7A32B29E3E7000A724B /* Model */,
-				CEDDC7A42B29E3F9000A724B /* View */,
-			);
-			name = NotesList;
+			path = View;
 			sourceTree = "<group>";
 		};
 		CEDDC7AD2B2A1DF6000A724B /* Extension */ = {
@@ -158,14 +175,6 @@
 				CEDDC7C02B305E29000A724B /* UIAlertControl + Extens.swift */,
 			);
 			name = Extension;
-			sourceTree = "<group>";
-		};
-		CEDDC7C22B3309B7000A724B /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				CEDDC7C32B3324F9000A724B /* Model.xcdatamodeld */,
-			);
-			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8E56372B35D52D00338D87 /* NoteEntity+CoreDataClass.swift in Sources */,
 				CEDDC7AC2B2A1DF2000A724B /* UIColor + Extens.swift in Sources */,
 				CEDDC7AA2B2A035E000A724B /* TableViewSection.swift in Sources */,
 				CEDDC7A22B29E3D8000A724B /* Note.swift in Sources */,
@@ -259,6 +269,7 @@
 				CEDDC7C12B305E29000A724B /* UIAlertControl + Extens.swift in Sources */,
 				CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */,
 				CEDDC7952B29C12C000A724B /* SimpleNoteTableViewCell.swift in Sources */,
+				CE8E56382B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift in Sources */,
 				CEDDC7972B29C146000A724B /* ImageNoteTableViewCell.swift in Sources */,
 				CEDDC7C52B3324F9000A724B /* Model.xcdatamodeld in Sources */,
 				CEDDC7A82B29F7AF000A724B /* NotesListViewModel.swift in Sources */,

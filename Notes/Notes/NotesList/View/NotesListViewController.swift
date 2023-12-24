@@ -19,6 +19,11 @@ final class NotesListViewController: UITableViewController {
         title = "Notes"
         setupTableView()
         setupToolBar()
+        registerObserver()
+        
+        viewModel?.reloadTable = { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,8 +53,20 @@ final class NotesListViewController: UITableViewController {
     
     @objc private func addAction() {
         let noteVC = NoteViewController()
+        let viewModel = NoteViewModel(note: nil)
+        noteVC.viewModel = viewModel
         navigationController?.pushViewController(noteVC,
                                                  animated: true)
+    }
+    @objc private func updateData() {
+        viewModel?.getNotes()
+    }
+    
+    private func registerObserver() {
+        NotificationCenter.default.addObserver(self, 
+                                               selector: #selector(updateData),
+                                               name: NSNotification.Name("Update"),
+                                               object: nil)
     }
 }
 
@@ -57,6 +74,11 @@ final class NotesListViewController: UITableViewController {
 extension NotesListViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         viewModel?.section.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, 
+                            titleForHeaderInSection section: Int) -> String? {
+        viewModel?.section[section].title
     }
     
     override func tableView(_ tableView: UITableView,
@@ -88,7 +110,8 @@ extension NotesListViewController {
                             didSelectRowAt indexPath: IndexPath) {
         guard let note = viewModel?.section[indexPath.section].items[indexPath.row] as? Note else { return }
         let noteVC = NoteViewController()
-        noteVC.set(note: note)
+        let viewModel = NoteViewModel(note: note)
+        noteVC.viewModel = viewModel
         navigationController?.pushViewController(noteVC,
                                                  animated: true)
     }

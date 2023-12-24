@@ -34,7 +34,6 @@ final class NoteViewController: UIViewController {
         let view = UIImageView()
         
         view.layer.cornerRadius = 10
-        view.image = UIImage(named: "audi") ?? .actions
         view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         
@@ -51,11 +50,14 @@ final class NoteViewController: UIViewController {
     }()
     
     // MARK: - Properties
-     var selectedColor: ColorCategory = .blue
+    var selectedColor: ColorCategory = .blue
+    var viewModel: NoteViewModelProtocol? = nil
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configure()
         setupUI()
     }
     
@@ -64,25 +66,20 @@ final class NoteViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = false
     }
-    
-    // MARK: - Methods
-    func set(note: Note) {
-        textView.text = note.title + " " + note.description
-        guard let imageData = note.image,
-              let image = UIImage(data: imageData) else { return }
-        attachmentView.image = image
-    }
+
     // MARK: - Private methods
     @objc private func hideKeyboard() {
         textView.resignFirstResponder()
     }
     
     @objc private func saveAction() {
-        
+        viewModel?.save(with: textView.text)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func deleteAction() {
-        
+        viewModel?.delete()
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func showColors() {
@@ -133,6 +130,10 @@ final class NoteViewController: UIViewController {
         action.setValue(circle, forKey: "image")
         action.setValue(colorCategory, forKey: "imageTintColor")
         return action
+    }
+    
+    private func configure() {
+         textView.text = viewModel?.text
     }
     
     private func setupUI() {

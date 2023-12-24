@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CE8E56372B35D52D00338D87 /* NoteEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56352B35D52D00338D87 /* NoteEntity+CoreDataClass.swift */; };
 		CE8E56382B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56362B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift */; };
+		CE8E56412B36C94600338D87 /* NotePersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56402B36C94600338D87 /* NotePersistent.swift */; };
+		CE8E56432B36CB9C00338D87 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56422B36CB9C00338D87 /* NoteViewModel.swift */; };
 		CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7802B29B090000A724B /* AppDelegate.swift */; };
 		CEDDC7852B29B090000A724B /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7842B29B090000A724B /* NotesListViewController.swift */; };
 		CEDDC78A2B29B091000A724B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDDC7892B29B091000A724B /* Assets.xcassets */; };
@@ -35,16 +37,18 @@
 /* Begin PBXFileReference section */
 		CE8E56352B35D52D00338D87 /* NoteEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE8E56362B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CE8E56402B36C94600338D87 /* NotePersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePersistent.swift; sourceTree = "<group>"; };
+		CE8E56422B36CB9C00338D87 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		CEDDC77D2B29B090000A724B /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDDC7802B29B090000A724B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEDDC7842B29B090000A724B /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
+		CEDDC7842B29B090000A724B /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotesListViewController.swift; path = NotesList/View/NotesListViewController.swift; sourceTree = "<group>"; };
 		CEDDC7892B29B091000A724B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEDDC78C2B29B091000A724B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEDDC78E2B29B091000A724B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEDDC7942B29C12C000A724B /* SimpleNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNoteTableViewCell.swift; sourceTree = "<group>"; };
-		CEDDC7962B29C146000A724B /* ImageNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNoteTableViewCell.swift; sourceTree = "<group>"; };
-		CEDDC7A12B29E3D8000A724B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		CEDDC7A72B29F7AF000A724B /* NotesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewModel.swift; sourceTree = "<group>"; };
+		CEDDC7942B29C12C000A724B /* SimpleNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SimpleNoteTableViewCell.swift; path = NotesList/View/SimpleNoteTableViewCell.swift; sourceTree = "<group>"; };
+		CEDDC7962B29C146000A724B /* ImageNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageNoteTableViewCell.swift; path = NotesList/View/ImageNoteTableViewCell.swift; sourceTree = "<group>"; };
+		CEDDC7A12B29E3D8000A724B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Note.swift; path = NotesList/Model/Note.swift; sourceTree = "<group>"; };
+		CEDDC7A72B29F7AF000A724B /* NotesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotesListViewModel.swift; path = ../ViewModel/NotesListViewModel.swift; sourceTree = "<group>"; };
 		CEDDC7A92B2A035E000A724B /* TableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSection.swift; sourceTree = "<group>"; };
 		CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extens.swift"; sourceTree = "<group>"; };
 		CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
@@ -103,8 +107,26 @@
 			isa = PBXGroup;
 			children = (
 				CE27DB902B35CDA50049C69C /* View */,
+				CE8E56442B36CBA100338D87 /* ViewModel */,
 			);
 			path = Note;
+			sourceTree = "<group>";
+		};
+		CE8E563F2B36B3C000338D87 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */,
+				CEDDC7C02B305E29000A724B /* UIAlertControl + Extens.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CE8E56442B36CBA100338D87 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E56422B36CB9C00338D87 /* NoteViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CEDDC7742B29B090000A724B = {
@@ -128,9 +150,10 @@
 			children = (
 				CEDDC7802B29B090000A724B /* AppDelegate.swift */,
 				CEDDC7A92B2A035E000A724B /* TableViewSection.swift */,
+				CE8E56402B36C94600338D87 /* NotePersistent.swift */,
 				CE8E563E2B36B07100338D87 /* Note */,
 				CE8E56392B36AEAF00338D87 /* NotesList */,
-				CEDDC7AD2B2A1DF6000A724B /* Extension */,
+				CE8E563F2B36B3C000338D87 /* Extension */,
 				CE8E56342B35D50D00338D87 /* CoreData */,
 				CEDDC7892B29B091000A724B /* Assets.xcassets */,
 				CEDDC78B2B29B091000A724B /* LaunchScreen.storyboard */,
@@ -166,15 +189,6 @@
 			);
 			name = ViewModel;
 			path = View;
-			sourceTree = "<group>";
-		};
-		CEDDC7AD2B2A1DF6000A724B /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */,
-				CEDDC7C02B305E29000A724B /* UIAlertControl + Extens.swift */,
-			);
-			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +279,7 @@
 				CEDDC7AA2B2A035E000A724B /* TableViewSection.swift in Sources */,
 				CEDDC7A22B29E3D8000A724B /* Note.swift in Sources */,
 				CEDDC7852B29B090000A724B /* NotesListViewController.swift in Sources */,
+				CE8E56432B36CB9C00338D87 /* NoteViewModel.swift in Sources */,
 				CEDDC7AF2B2B2E86000A724B /* NoteViewController.swift in Sources */,
 				CEDDC7C12B305E29000A724B /* UIAlertControl + Extens.swift in Sources */,
 				CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */,
@@ -272,6 +287,7 @@
 				CE8E56382B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift in Sources */,
 				CEDDC7972B29C146000A724B /* ImageNoteTableViewCell.swift in Sources */,
 				CEDDC7C52B3324F9000A724B /* Model.xcdatamodeld in Sources */,
+				CE8E56412B36C94600338D87 /* NotePersistent.swift in Sources */,
 				CEDDC7A82B29F7AF000A724B /* NotesListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

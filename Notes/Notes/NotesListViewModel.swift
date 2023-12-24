@@ -30,15 +30,16 @@ final class NotesListViewModel: NotesListViewModelProtocol {
     private func setMocks() {
         let section = TableViewSection(title: "26 April 2023",
                                        items: [Note(title: "First note",
-                                                   description: "First note description",
-                                                   date: Date(),
-                                                   imageURL: nil,
-                                                   image: nil),
+                                                    description: "First note description",
+                                                    date: Date(),
+                                                    imageURL: nil,
+                                                    image: nil, category: nil),
+                                               
                                                Note(title: "Second note",
-                                                           description: "Second note description",
-                                                           date: Date(),
-                                                           imageURL: nil,
-                                                           image: nil)
+                                                    description: "Second note description",
+                                                    date: Date(),
+                                                    imageURL: nil,
+                                                    image: nil, category: nil)
                                        ])
         self.section = [section]
     }

@@ -8,6 +8,25 @@
 import UIKit
 import SnapKit
 
+enum ColorCategory: String {
+    case green, blue, yellow, red, white
+    
+    var color: UIColor {
+        switch self {
+        case .green:
+            UIColor.lightGreen
+        case .blue:
+            UIColor.lightBlue
+        case .yellow:
+            UIColor.lightYellow
+        case.red:
+            UIColor.lightRed
+        case .white:
+            UIColor.white
+        }
+    }
+}
+
 final class NoteViewController: UIViewController {
     
     // MARK: - GUI Variables
@@ -27,9 +46,12 @@ final class NoteViewController: UIViewController {
         
         view.layer.cornerRadius = 10
         view.layer.borderColor = UIColor.lightGray.cgColor
-
+        
         return view
     }()
+    
+    // MARK: - Properties
+     var selectedColor: ColorCategory = .blue
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -63,12 +85,62 @@ final class NoteViewController: UIViewController {
         
     }
     
+    @objc private func showColors() {
+        // Create alert
+        let alert = UIAlertController(title: "Category by color",
+                                      message: "Choose the color of your note",
+                                      preferredStyle: .actionSheet)
+        // Add actions
+        let redAction = makeAction(title: "Red", category: .red)
+        let blueAction = makeAction(title: "Blue", category: .blue)
+        let yellowAction = makeAction(title: "Yellow", category: .yellow)
+        let greenAction = makeAction(title: "Green", category: .green)
+        let whiteAction = makeAction(title: "Default", category: .white)
+        
+        alert.addActions(actions: [redAction, blueAction, yellowAction, greenAction, whiteAction])
+        
+        present(alert, animated: true)
+    }
+    
+    private func makeAction(title: String, category: ColorCategory) -> UIAlertAction {
+        let colorCategory = {
+            return category.color
+        }()
+        // Get system image
+        let circle = UIImage(systemName: "circle.fill")
+        // Create action
+        let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
+            self?.view.backgroundColor = colorCategory
+            // Set case for selectedColor from UIColor
+            self?.selectedColor = {
+                switch colorCategory {
+                case .green:
+                        .green
+                case .blue:
+                        .blue
+                case .yellow:
+                        .yellow
+                case .red:
+                        .red
+                case .white:
+                        .white
+                default:
+                        .white
+                }
+            }()
+        }
+        // Set
+        action.setValue(circle, forKey: "image")
+        action.setValue(colorCategory, forKey: "imageTintColor")
+        return action
+    }
+    
     private func setupUI() {
         view.addSubview(attachmentView)
         view.addSubview(textView)
         view.backgroundColor = .white
         let recognizer = UITapGestureRecognizer(target: self,
-                                             action: #selector(hideKeyboard))
+                                                action: #selector(hideKeyboard))
         view.addGestureRecognizer(recognizer)
         
         textView.layer.borderWidth = textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 1 : 0
@@ -101,12 +173,20 @@ final class NoteViewController: UIViewController {
     }
     
     private func setupBars() {
+        let imageCircle = UIImage(systemName: "circle.fill") ?? .add
+        
+        let button = UIButton(type: .custom)
+        button.setImage(imageCircle, for: .normal)
+        button.tintColor = .red
+        button.addTarget(self, action: #selector(showColors), for: .touchUpInside)
+        
+        let circle = UIBarButtonItem(customView: button)
+        let spacing = UIBarButtonItem(systemItem: .flexibleSpace)
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash,
                                           target: self,
                                           action: #selector(deleteAction))
-        setToolbarItems([trashButton],
+        setToolbarItems([trashButton, spacing, circle],
                         animated: true)
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
                                                             target: self,
                                                             action: #selector(saveAction))

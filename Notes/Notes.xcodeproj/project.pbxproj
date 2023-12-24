@@ -22,6 +22,11 @@
 		CEDDC7AF2B2B2E86000A724B /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */; };
 		CEDDC7B12B2B2E9B000A724B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7B02B2B2E9B000A724B /* SnapKit */; };
 		CEDDC7B32B2B2E9B000A724B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7B22B2B2E9B000A724B /* SnapKit-Dynamic */; };
+		CEDDC7B92B2FF3D3000A724B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7B82B2FF3D3000A724B /* SnapKit */; };
+		CEDDC7BB2B2FF3D3000A724B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7BA2B2FF3D3000A724B /* SnapKit-Dynamic */; };
+		CEDDC7BD2B2FF3F3000A724B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7BC2B2FF3F3000A724B /* SnapKit */; };
+		CEDDC7BF2B2FF3F3000A724B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7BE2B2FF3F3000A724B /* SnapKit-Dynamic */; };
+		CEDDC7C12B305E29000A724B /* UIAlertControl + Extens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7C02B305E29000A724B /* UIAlertControl + Extens.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,7 @@
 		CEDDC7A92B2A035E000A724B /* TableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSection.swift; sourceTree = "<group>"; };
 		CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extens.swift"; sourceTree = "<group>"; };
 		CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		CEDDC7C02B305E29000A724B /* UIAlertControl + Extens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertControl + Extens.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +54,11 @@
 				CEDDC7B12B2B2E9B000A724B /* SnapKit in Frameworks */,
 				CEDDC79A2B29C688000A724B /* SnapKit in Frameworks */,
 				CEDDC79C2B29C688000A724B /* SnapKit-Dynamic in Frameworks */,
+				CEDDC7BF2B2FF3F3000A724B /* SnapKit-Dynamic in Frameworks */,
+				CEDDC7BD2B2FF3F3000A724B /* SnapKit in Frameworks */,
 				CEDDC7B32B2B2E9B000A724B /* SnapKit-Dynamic in Frameworks */,
+				CEDDC7B92B2FF3D3000A724B /* SnapKit in Frameworks */,
+				CEDDC7BB2B2FF3D3000A724B /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */,
+				CEDDC7C02B305E29000A724B /* UIAlertControl + Extens.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -167,6 +178,10 @@
 				CEDDC79B2B29C688000A724B /* SnapKit-Dynamic */,
 				CEDDC7B02B2B2E9B000A724B /* SnapKit */,
 				CEDDC7B22B2B2E9B000A724B /* SnapKit-Dynamic */,
+				CEDDC7B82B2FF3D3000A724B /* SnapKit */,
+				CEDDC7BA2B2FF3D3000A724B /* SnapKit-Dynamic */,
+				CEDDC7BC2B2FF3F3000A724B /* SnapKit */,
+				CEDDC7BE2B2FF3F3000A724B /* SnapKit-Dynamic */,
 			);
 			productName = Notes;
 			productReference = CEDDC77D2B29B090000A724B /* Notes.app */;
@@ -230,6 +245,7 @@
 				CEDDC7A22B29E3D8000A724B /* Note.swift in Sources */,
 				CEDDC7852B29B090000A724B /* NotesListViewController.swift in Sources */,
 				CEDDC7AF2B2B2E86000A724B /* NoteViewController.swift in Sources */,
+				CEDDC7C12B305E29000A724B /* UIAlertControl + Extens.swift in Sources */,
 				CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */,
 				CEDDC7952B29C12C000A724B /* SimpleNoteTableViewCell.swift in Sources */,
 				CEDDC7972B29C146000A724B /* ImageNoteTableViewCell.swift in Sources */,
@@ -475,6 +491,26 @@
 			productName = SnapKit;
 		};
 		CEDDC7B22B2B2E9B000A724B /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		CEDDC7B82B2FF3D3000A724B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		CEDDC7BA2B2FF3D3000A724B /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		CEDDC7BC2B2FF3F3000A724B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		CEDDC7BE2B2FF3F3000A724B /* SnapKit-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";

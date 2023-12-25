@@ -46,6 +46,8 @@ final class NoteViewController: UIViewController {
         view.layer.cornerRadius = 10
         view.layer.borderColor = UIColor.lightGray.cgColor
         
+        view.delegate = self
+        
         return view
     }()
     
@@ -65,8 +67,10 @@ final class NoteViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.rightBarButtonItem?.isHidden = true
+        changeTrashButton()
     }
-
+    
     // MARK: - Private methods
     @objc private func hideKeyboard() {
         textView.resignFirstResponder()
@@ -133,7 +137,7 @@ final class NoteViewController: UIViewController {
     }
     
     private func configure() {
-         textView.text = viewModel?.text
+        textView.text = viewModel?.text
     }
     
     private func setupUI() {
@@ -165,6 +169,16 @@ final class NoteViewController: UIViewController {
         }
     }
     
+    private func changeTrashButton() {
+        let trashButton = toolbarItems?.first
+        if textView.layer.borderWidth == 1 {
+            trashButton?.isHidden = true
+        } else {
+            //            navigationController?.toolbarItems?.first?.isHidden = false
+            trashButton?.isHidden = false
+        }
+    }
+    
     private func setImageHeight() {
         let height = attachmentView.image != nil ? 200 : 0
         
@@ -191,5 +205,16 @@ final class NoteViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
                                                             target: self,
                                                             action: #selector(saveAction))
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension NoteViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if !textView.text.isEmpty {
+            navigationItem.rightBarButtonItem?.isHidden = false
+        } else {
+            navigationItem.rightBarButtonItem?.isHidden = true
+        }
     }
 }

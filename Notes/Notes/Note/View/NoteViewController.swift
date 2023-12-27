@@ -27,13 +27,19 @@ final class NoteViewController: UIViewController {
         view.layer.cornerRadius = 10
         view.layer.borderColor = UIColor.lightGray.cgColor
         
-        view.delegate = self
+//        view.delegate = self
         
         return view
     }()
     
     // MARK: - Properties
-    var selectedCategory: ColorCategory?
+    private var isChange: Bool = false
+    
+    var selectedCategory: ColorCategory? {
+        didSet {
+            isChange = true
+        }
+    }
     
     var viewModel: NoteViewModelProtocol
     
@@ -51,7 +57,6 @@ final class NoteViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.rightBarButtonItem?.isHidden = true
         changeTrashButton()
-        
     }
     
     // MARK: - Initialization
@@ -95,6 +100,7 @@ final class NoteViewController: UIViewController {
         let action = UIAlertAction(title: category.title, style: .default) { [weak self] _ in
             self?.view.backgroundColor = category.color
             self?.selectedCategory = category
+            self?.hidingSaveButton(param: self?.isChange ?? false)
         }
         // Set
         action.setValue(UIImage(systemName: "circle.fill"), forKey: "image")
@@ -172,17 +178,27 @@ final class NoteViewController: UIViewController {
                                                             target: self,
                                                             action: #selector(saveAction))
     }
-}
-
-// MARK: - UITextViewDelegate
-extension NoteViewController: UITextViewDelegate {
     
-    func textViewDidChange(_ textView: UITextView) {
-        if !textView.text.isEmpty {
+    private func hidingSaveButton(param: Bool) {
+        if param {
             navigationItem.rightBarButtonItem?.isHidden = false
         } else {
             navigationItem.rightBarButtonItem?.isHidden = true
         }
     }
+}
+
+
+// MARK: - UITextViewDelegate
+extension NoteViewController: UITextViewDelegate {
     
+    func textViewDidChange(_ textView: UITextView) {
+        hidingSaveButton(param: !textView.text.isEmpty)
+        
+//        if !textView.text.isEmpty || isChange {
+//            navigationItem.rightBarButtonItem?.isHidden = false
+//        } else {
+//            navigationItem.rightBarButtonItem?.isHidden = true
+//        }
+    }
 }

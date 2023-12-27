@@ -8,39 +8,6 @@
 import UIKit
 import SnapKit
 
-enum ColorCategory: String, CaseIterable {
-    
-    case green, blue, yellow, red, white
-    var title: String {
-        switch self {
-        case .green:
-            "Green"
-        case .blue:
-            "Blue"
-        case .yellow:
-            "Yellow"
-        case .red:
-            "Red"
-        case .white:
-            "White"
-        }
-    }
-    var color: UIColor {
-        switch self {
-        case .green:
-            UIColor.lightGreen
-        case .blue:
-            UIColor.lightBlue
-        case .yellow:
-            UIColor.lightYellow
-        case.red:
-            UIColor.lightRed
-        case .white:
-            UIColor.white
-        }
-    }
-}
-
 final class NoteViewController: UIViewController {
     
     // MARK: - GUI Variables
@@ -74,7 +41,7 @@ final class NoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configure()
+        configText()
         setupUI()
     }
     
@@ -82,7 +49,9 @@ final class NoteViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.rightBarButtonItem?.isHidden = true
         changeTrashButton()
+        
     }
     
     // MARK: - Initialization
@@ -101,9 +70,9 @@ final class NoteViewController: UIViewController {
         textView.resignFirstResponder()
     }
     
-    @objc private func doneAction() {
-        textView.resignFirstResponder()
-//        viewModel.save(with: textView.text, category: selectedCategory ?? .white)
+    @objc private func saveAction() {
+        viewModel.save(with: textView.text, category: selectedCategory ?? .white)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func deleteAction() {
@@ -133,14 +102,14 @@ final class NoteViewController: UIViewController {
         return action
     }
     
-    private func configure() {
+    private func configText() {
         textView.text = viewModel.text
     }
     
     private func setupUI() {
         view.addSubview(attachmentView)
         view.addSubview(textView)
-        view.backgroundColor = .white
+        view.backgroundColor = viewModel.note?.category?.color
         let recognizer = UITapGestureRecognizer(target: self,
                                                 action: #selector(hideKeyboard))
         view.addGestureRecognizer(recognizer)
@@ -198,19 +167,15 @@ final class NoteViewController: UIViewController {
                                           action: #selector(deleteAction))
         setToolbarItems([trashButton, spacing, circle],
                         animated: true)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
                                                             style: .done,
                                                             target: self,
-                                                            action: #selector(doneAction))
+                                                            action: #selector(saveAction))
     }
 }
 
 // MARK: - UITextViewDelegate
 extension NoteViewController: UITextViewDelegate {
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-            viewModel.save(with: textView.text, category: selectedCategory ?? .white)
-    }
     
     func textViewDidChange(_ textView: UITextView) {
         if !textView.text.isEmpty {

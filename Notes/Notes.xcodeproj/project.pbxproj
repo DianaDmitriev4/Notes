@@ -11,6 +11,7 @@
 		CE8E56382B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56362B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift */; };
 		CE8E56412B36C94600338D87 /* NotePersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56402B36C94600338D87 /* NotePersistent.swift */; };
 		CE8E56432B36CB9C00338D87 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56422B36CB9C00338D87 /* NoteViewModel.swift */; };
+		CECE68612B3C101900EC6813 /* ColorCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE68602B3C101900EC6813 /* ColorCategory.swift */; };
 		CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7802B29B090000A724B /* AppDelegate.swift */; };
 		CEDDC7852B29B090000A724B /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7842B29B090000A724B /* NotesListViewController.swift */; };
 		CEDDC78A2B29B091000A724B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDDC7892B29B091000A724B /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		CE8E56362B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CE8E56402B36C94600338D87 /* NotePersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePersistent.swift; sourceTree = "<group>"; };
 		CE8E56422B36CB9C00338D87 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		CECE68602B3C101900EC6813 /* ColorCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCategory.swift; sourceTree = "<group>"; };
 		CEDDC77D2B29B090000A724B /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDDC7802B29B090000A724B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEDDC7842B29B090000A724B /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotesListViewController.swift; path = NotesList/View/NotesListViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */,
+				CECE68602B3C101900EC6813 /* ColorCategory.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */,
 				CEDDC7952B29C12C000A724B /* SimpleNoteTableViewCell.swift in Sources */,
 				CE8E56382B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift in Sources */,
+				CECE68612B3C101900EC6813 /* ColorCategory.swift in Sources */,
 				CEDDC7972B29C146000A724B /* ImageNoteTableViewCell.swift in Sources */,
 				CEDDC7C52B3324F9000A724B /* Model.xcdatamodeld in Sources */,
 				CE8E56412B36C94600338D87 /* NotePersistent.swift in Sources */,

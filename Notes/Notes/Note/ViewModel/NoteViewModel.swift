@@ -9,6 +9,7 @@ import Foundation
 
 protocol NoteViewModelProtocol {
     var text: String { get }
+    var note: Note? { get }
     
     func save(with text: String, category: ColorCategory)
     func delete()

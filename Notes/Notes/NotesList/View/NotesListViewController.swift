@@ -106,7 +106,7 @@ extension NotesListViewController {
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageNoteTableViewCell", 
-                                                            for: indexPath) as? ImageNoteTableViewCell else { return UITableViewCell() }
+                                                           for: indexPath) as? ImageNoteTableViewCell else { return UITableViewCell() }
             cell.set(note: note)
             return cell
         }

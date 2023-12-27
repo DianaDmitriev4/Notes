@@ -61,7 +61,6 @@ final class ImageNoteTableViewCell: UITableViewCell {
         guard let imageData = note.image,
               let image = UIImage(data: imageData) else { return }
         attachmentView.image = image
-    
     }
     
     // MARK: - Private methods

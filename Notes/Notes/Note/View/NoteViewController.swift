@@ -190,10 +190,9 @@ final class NoteViewController: UIViewController {
     }
 }
 
-
 // MARK: - UITextViewDelegate
 extension NoteViewController: UITextViewDelegate {
-
+    
     func textViewDidChange(_ textView: UITextView) {
         hideSaveButton(param: !textView.text.isEmpty)
     }

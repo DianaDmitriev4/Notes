@@ -27,7 +27,7 @@ final class NoteViewController: UIViewController {
         view.layer.cornerRadius = 10
         view.layer.borderColor = UIColor.lightGray.cgColor
         
-//        view.delegate = self
+        view.delegate = self
         
         return view
     }()
@@ -89,7 +89,7 @@ final class NoteViewController: UIViewController {
         let alert = UIAlertController(title: "Category by color",
                                       message: "Choose the color of your note",
                                       preferredStyle: .actionSheet)
-     
+        
         alert.addActions(actions: ColorCategory.allCases.map({ makeAction(category: $0) }))
         
         present(alert, animated: true)
@@ -100,7 +100,7 @@ final class NoteViewController: UIViewController {
         let action = UIAlertAction(title: category.title, style: .default) { [weak self] _ in
             self?.view.backgroundColor = category.color
             self?.selectedCategory = category
-            self?.hidingSaveButton(param: self?.isChange ?? false)
+            self?.hideSaveButton(param: self?.isChange ?? false)
         }
         // Set
         action.setValue(UIImage(systemName: "circle.fill"), forKey: "image")
@@ -124,7 +124,8 @@ final class NoteViewController: UIViewController {
         
         setupConstraints()
         setImageHeight()
-        setupBars()
+        setupToolbar()
+        setupNavigationBar()
     }
     
     private func setupConstraints() {
@@ -158,11 +159,17 @@ final class NoteViewController: UIViewController {
         }
     }
     
-    private func setupBars() {
-        let imageCircle = UIImage(systemName: "circle.fill") ?? .add
-        
+    private func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(saveAction))
+    }
+    
+    private func setupToolbar() {
         let button = UIButton(type: .custom)
-        button.setImage(imageCircle, for: .normal)
+        button.setImage(UIImage(systemName: "circle.fill") ?? .add,
+                        for: .normal)
         button.tintColor = .red
         button.addTarget(self, action: #selector(showColors), for: .touchUpInside)
         
@@ -171,15 +178,10 @@ final class NoteViewController: UIViewController {
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash,
                                           target: self,
                                           action: #selector(deleteAction))
-        setToolbarItems([trashButton, spacing, circle],
-                        animated: true)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
-                                                            style: .done,
-                                                            target: self,
-                                                            action: #selector(saveAction))
+        setToolbarItems([trashButton, spacing, circle], animated: true)
     }
     
-    private func hidingSaveButton(param: Bool) {
+    private func hideSaveButton(param: Bool) {
         if param {
             navigationItem.rightBarButtonItem?.isHidden = false
         } else {
@@ -191,14 +193,8 @@ final class NoteViewController: UIViewController {
 
 // MARK: - UITextViewDelegate
 extension NoteViewController: UITextViewDelegate {
-    
+
     func textViewDidChange(_ textView: UITextView) {
-        hidingSaveButton(param: !textView.text.isEmpty)
-        
-//        if !textView.text.isEmpty || isChange {
-//            navigationItem.rightBarButtonItem?.isHidden = false
-//        } else {
-//            navigationItem.rightBarButtonItem?.isHidden = true
-//        }
+        hideSaveButton(param: !textView.text.isEmpty)
     }
 }

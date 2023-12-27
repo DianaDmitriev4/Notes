@@ -63,6 +63,7 @@ final class NotesListViewController: UITableViewController {
     
     @objc private func addAction() {
         let noteVC = NoteViewController(viewModel: NoteViewModel(note: nil))
+        noteVC.view.backgroundColor = .white
         navigationController?.pushViewController(noteVC, animated: true)
     }
     
@@ -118,7 +119,6 @@ extension NotesListViewController {
                             didSelectRowAt indexPath: IndexPath) {
         guard let note = viewModel?.section[indexPath.section].items[indexPath.row] as? Note else { return }
         let noteVC = NoteViewController(viewModel: NoteViewModel(note: note))
-        navigationController?.pushViewController(noteVC,
-                                                 animated: true)
+        navigationController?.pushViewController(noteVC, animated: true)
     }
 }

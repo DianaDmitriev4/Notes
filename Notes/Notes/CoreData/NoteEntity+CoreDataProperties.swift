@@ -20,6 +20,7 @@ extension NoteEntity {
     @NSManaged public var imageUrl: URL?
     @NSManaged public var text: String?
     @NSManaged public var title: String?
+    @NSManaged public var category: String?
 
 }
 

@@ -26,8 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window {
             let navigationController = UINavigationController()
-            let viewController = NotesListViewController()
-            viewController.viewModel = NotesListViewModel()
+            let viewController = NotesListViewController(viewModel: NotesListViewModel())
             navigationController.viewControllers = [viewController]
             window.rootViewController = navigationController
             window.makeKeyAndVisible()

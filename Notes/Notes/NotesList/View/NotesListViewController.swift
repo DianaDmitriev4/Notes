@@ -25,6 +25,16 @@ final class NotesListViewController: UITableViewController {
             self?.tableView.reloadData()
         }
     }
+    // MARK: - Initialization
+    init(viewModel: NotesListViewModelProtocol) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,12 +62,10 @@ final class NotesListViewController: UITableViewController {
     }
     
     @objc private func addAction() {
-        let noteVC = NoteViewController()
-        let viewModel = NoteViewModel(note: nil)
-        noteVC.viewModel = viewModel
-        navigationController?.pushViewController(noteVC,
-                                                 animated: true)
+        let noteVC = NoteViewController(viewModel: NoteViewModel(note: nil))
+        navigationController?.pushViewController(noteVC, animated: true)
     }
+    
     @objc private func updateData() {
         viewModel?.getNotes()
     }
@@ -109,9 +117,7 @@ extension NotesListViewController {
     override func tableView(_ tableView: UITableView, 
                             didSelectRowAt indexPath: IndexPath) {
         guard let note = viewModel?.section[indexPath.section].items[indexPath.row] as? Note else { return }
-        let noteVC = NoteViewController()
-        let viewModel = NoteViewModel(note: note)
-        noteVC.viewModel = viewModel
+        let noteVC = NoteViewController(viewModel: NoteViewModel(note: note))
         navigationController?.pushViewController(noteVC,
                                                  animated: true)
     }

@@ -26,6 +26,7 @@ final class NotePersistent {
         entity?.text = note.description
         entity?.date = note.date
         entity?.imageUrl = note.imageURL
+        entity?.category = note.category?.rawValue
         
         saveContext()
     }
@@ -55,15 +56,15 @@ final class NotePersistent {
             Note(title: $0.title ?? "",
                  description: $0.text,
                  date: $0.date ?? Date(),
-                 imageURL: $0.imageUrl)
+                 imageURL: $0.imageUrl,
+                 category: ColorCategory(rawValue: $0.category ?? ""))
         }
         
         return notes
     }
     
     private static func postNotification() {
-        NotificationCenter.default.post(name: NSNotification.Name("Update"),
-                                        object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("Update"), object: nil)
     }
     
     private static func getEntity(for note: Note) -> NoteEntity? {

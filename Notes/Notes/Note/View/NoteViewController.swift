@@ -8,9 +8,23 @@
 import UIKit
 import SnapKit
 
-enum ColorCategory: String {
-    case green, blue, yellow, red, white
+enum ColorCategory: String, CaseIterable {
     
+    case green, blue, yellow, red, white
+    var title: String {
+        switch self {
+        case .green:
+            "Green"
+        case .blue:
+            "Blue"
+        case .yellow:
+            "Yellow"
+        case .red:
+            "Red"
+        case .white:
+            "White"
+        }
+    }
     var color: UIColor {
         switch self {
         case .green:
@@ -52,8 +66,9 @@ final class NoteViewController: UIViewController {
     }()
     
     // MARK: - Properties
-    var selectedColor: ColorCategory = .blue
-    var viewModel: NoteViewModelProtocol? = nil
+    var selectedCategory: ColorCategory?
+    
+    var viewModel: NoteViewModelProtocol
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -67,8 +82,18 @@ final class NoteViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.rightBarButtonItem?.isHidden = true
         changeTrashButton()
+    }
+    
+    // MARK: - Initialization
+    init(viewModel: NoteViewModelProtocol) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Private methods
@@ -76,68 +101,40 @@ final class NoteViewController: UIViewController {
         textView.resignFirstResponder()
     }
     
-    @objc private func saveAction() {
-        viewModel?.save(with: textView.text)
-        navigationController?.popViewController(animated: true)
+    @objc private func doneAction() {
+        textView.resignFirstResponder()
+//        viewModel.save(with: textView.text, category: selectedCategory ?? .white)
     }
     
     @objc private func deleteAction() {
-        viewModel?.delete()
+        viewModel.delete()
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func showColors() {
-        // Create alert
         let alert = UIAlertController(title: "Category by color",
                                       message: "Choose the color of your note",
                                       preferredStyle: .actionSheet)
-        // Add actions
-        let redAction = makeAction(title: "Red", category: .red)
-        let blueAction = makeAction(title: "Blue", category: .blue)
-        let yellowAction = makeAction(title: "Yellow", category: .yellow)
-        let greenAction = makeAction(title: "Green", category: .green)
-        let whiteAction = makeAction(title: "Default", category: .white)
-        
-        alert.addActions(actions: [redAction, blueAction, yellowAction, greenAction, whiteAction])
+     
+        alert.addActions(actions: ColorCategory.allCases.map({ makeAction(category: $0) }))
         
         present(alert, animated: true)
     }
     
-    private func makeAction(title: String, category: ColorCategory) -> UIAlertAction {
-        let colorCategory = {
-            return category.color
-        }()
-        // Get system image
-        let circle = UIImage(systemName: "circle.fill")
+    private func makeAction(category: ColorCategory) -> UIAlertAction {
         // Create action
-        let action = UIAlertAction(title: title, style: .default) { [weak self] _ in
-            self?.view.backgroundColor = colorCategory
-            // Set case for selectedColor from UIColor
-            self?.selectedColor = {
-                switch colorCategory {
-                case .green:
-                        .green
-                case .blue:
-                        .blue
-                case .yellow:
-                        .yellow
-                case .red:
-                        .red
-                case .white:
-                        .white
-                default:
-                        .white
-                }
-            }()
+        let action = UIAlertAction(title: category.title, style: .default) { [weak self] _ in
+            self?.view.backgroundColor = category.color
+            self?.selectedCategory = category
         }
         // Set
-        action.setValue(circle, forKey: "image")
-        action.setValue(colorCategory, forKey: "imageTintColor")
+        action.setValue(UIImage(systemName: "circle.fill"), forKey: "image")
+        action.setValue(category.color, forKey: "imageTintColor")
         return action
     }
     
     private func configure() {
-        textView.text = viewModel?.text
+        textView.text = viewModel.text
     }
     
     private func setupUI() {
@@ -174,7 +171,6 @@ final class NoteViewController: UIViewController {
         if textView.layer.borderWidth == 1 {
             trashButton?.isHidden = true
         } else {
-            //            navigationController?.toolbarItems?.first?.isHidden = false
             trashButton?.isHidden = false
         }
     }
@@ -202,14 +198,20 @@ final class NoteViewController: UIViewController {
                                           action: #selector(deleteAction))
         setToolbarItems([trashButton, spacing, circle],
                         animated: true)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done",
+                                                            style: .done,
                                                             target: self,
-                                                            action: #selector(saveAction))
+                                                            action: #selector(doneAction))
     }
 }
 
 // MARK: - UITextViewDelegate
 extension NoteViewController: UITextViewDelegate {
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+            viewModel.save(with: textView.text, category: selectedCategory ?? .white)
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         if !textView.text.isEmpty {
             navigationItem.rightBarButtonItem?.isHidden = false
@@ -217,4 +219,5 @@ extension NoteViewController: UITextViewDelegate {
             navigationItem.rightBarButtonItem?.isHidden = true
         }
     }
+    
 }

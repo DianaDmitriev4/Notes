@@ -10,7 +10,7 @@ import Foundation
 protocol NoteViewModelProtocol {
     var text: String { get }
     
-    func save(with text: String)
+    func save(with text: String, category: ColorCategory)
     func delete()
 }
 
@@ -28,14 +28,15 @@ final class NoteViewModel: NoteViewModelProtocol {
     }
     
     // MARK: - Methods
-    func save(with text: String) {
+    func save(with text: String, category: ColorCategory) {
         let (title, description) = createTitleAndDescription(from: text)
         let date = note?.date ?? Date()
         
         let note = Note(title: title,
                         description: description,
                         date: date,
-                        imageURL: nil)
+                        imageURL: nil, 
+                        category: category)
         
         NotePersistent.save(note)
     }

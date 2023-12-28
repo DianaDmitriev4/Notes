@@ -78,7 +78,8 @@ final class NoteViewController: UIViewController {
     }
     
     @objc private func saveAction() {
-        viewModel.save(with: textView.text, category: selectedCategory,
+        viewModel.save(with: textView.text, 
+                       category: selectedCategory,
                        image: attachmentView.image,
                        imageName: imageName)
         navigationController?.popViewController(animated: true)
@@ -123,6 +124,7 @@ final class NoteViewController: UIViewController {
     private func configure() {
         textView.text = viewModel.text
         attachmentView.image = viewModel.image
+        selectedCategory = viewModel.note?.category
     }
     
     private func setupUI() {
@@ -219,6 +221,8 @@ extension NoteViewController: UIImagePickerControllerDelegate & UINavigationCont
         imageName = url.lastPathComponent
         attachmentView.image = selectedImage
         updateImageHeight()
+        isChange = true
+        hideSaveButton(param: isChange)
         dismiss(animated: true)
     }
     

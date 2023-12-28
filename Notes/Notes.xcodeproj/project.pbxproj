@@ -12,6 +12,7 @@
 		CE8E56412B36C94600338D87 /* NotePersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56402B36C94600338D87 /* NotePersistent.swift */; };
 		CE8E56432B36CB9C00338D87 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56422B36CB9C00338D87 /* NoteViewModel.swift */; };
 		CECE68612B3C101900EC6813 /* ColorCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE68602B3C101900EC6813 /* ColorCategory.swift */; };
+		CECE68632B3C449700EC6813 /* FileManagerPersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE68622B3C449700EC6813 /* FileManagerPersistent.swift */; };
 		CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7802B29B090000A724B /* AppDelegate.swift */; };
 		CEDDC7852B29B090000A724B /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7842B29B090000A724B /* NotesListViewController.swift */; };
 		CEDDC78A2B29B091000A724B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDDC7892B29B091000A724B /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		CE8E56402B36C94600338D87 /* NotePersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePersistent.swift; sourceTree = "<group>"; };
 		CE8E56422B36CB9C00338D87 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		CECE68602B3C101900EC6813 /* ColorCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCategory.swift; sourceTree = "<group>"; };
+		CECE68622B3C449700EC6813 /* FileManagerPersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerPersistent.swift; sourceTree = "<group>"; };
 		CEDDC77D2B29B090000A724B /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDDC7802B29B090000A724B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEDDC7842B29B090000A724B /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotesListViewController.swift; path = NotesList/View/NotesListViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				CEDDC7802B29B090000A724B /* AppDelegate.swift */,
 				CEDDC7A92B2A035E000A724B /* TableViewSection.swift */,
 				CE8E56402B36C94600338D87 /* NotePersistent.swift */,
+				CECE68622B3C449700EC6813 /* FileManagerPersistent.swift */,
 				CE8E563E2B36B07100338D87 /* Note */,
 				CE8E56392B36AEAF00338D87 /* NotesList */,
 				CE8E563F2B36B3C000338D87 /* Extension */,
@@ -285,6 +288,7 @@
 				CE8E56432B36CB9C00338D87 /* NoteViewModel.swift in Sources */,
 				CEDDC7AF2B2B2E86000A724B /* NoteViewController.swift in Sources */,
 				CEDDC7C12B305E29000A724B /* UIAlertControl + Extens.swift in Sources */,
+				CECE68632B3C449700EC6813 /* FileManagerPersistent.swift in Sources */,
 				CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */,
 				CEDDC7952B29C12C000A724B /* SimpleNoteTableViewCell.swift in Sources */,
 				CE8E56382B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift in Sources */,

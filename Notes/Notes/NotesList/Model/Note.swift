@@ -12,6 +12,5 @@ struct Note: TableViewItemProtocol {
     let description: String?
     let date: Date
     let imageURL: URL?
-    let image: Data? = nil
     let category: ColorCategory? 
 }

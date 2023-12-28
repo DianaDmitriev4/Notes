@@ -33,6 +33,8 @@ final class NoteViewController: UIViewController {
     }()
     
     // MARK: - Properties
+    private var imageHeight = 200
+    private var imageName: String?
     private var isChange: Bool = false
     
     var selectedCategory: ColorCategory? {
@@ -47,7 +49,7 @@ final class NoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configText()
+        configure()
         setupUI()
     }
     
@@ -76,13 +78,23 @@ final class NoteViewController: UIViewController {
     }
     
     @objc private func saveAction() {
-        viewModel.save(with: textView.text, category: selectedCategory ?? .white)
+        viewModel.save(with: textView.text, category: selectedCategory,
+                       image: attachmentView.image,
+                       imageName: imageName)
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func deleteAction() {
         viewModel.delete()
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func addImage() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true)
     }
     
     @objc private func showColors() {
@@ -108,8 +120,9 @@ final class NoteViewController: UIViewController {
         return action
     }
     
-    private func configText() {
+    private func configure() {
         textView.text = viewModel.text
+        attachmentView.image = viewModel.image
     }
     
     private func setupUI() {
@@ -123,16 +136,15 @@ final class NoteViewController: UIViewController {
         textView.layer.borderWidth = textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 1 : 0
         
         setupConstraints()
-        setImageHeight()
         setupToolbar()
         setupNavigationBar()
     }
     
     private func setupConstraints() {
         attachmentView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview().inset(10)
-            make.height.equalTo(200)
+            let height = attachmentView.image != nil ? imageHeight : 0
+            make.height.equalTo(height)
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
         
         textView.snp.makeConstraints { make in
@@ -142,20 +154,18 @@ final class NoteViewController: UIViewController {
         }
     }
     
+    private func updateImageHeight() {
+        attachmentView.snp.updateConstraints { make in
+            make.height.equalTo(imageHeight)
+        }
+    }
+    
     private func changeTrashButton() {
         let trashButton = toolbarItems?.first
         if textView.layer.borderWidth == 1 {
             trashButton?.isHidden = true
         } else {
             trashButton?.isHidden = false
-        }
-    }
-    
-    private func setImageHeight() {
-        let height = attachmentView.image != nil ? 200 : 0
-        
-        attachmentView.snp.makeConstraints { make in
-            make.height.equalTo(height)
         }
     }
     
@@ -178,7 +188,10 @@ final class NoteViewController: UIViewController {
         let trashButton = UIBarButtonItem(barButtonSystemItem: .trash,
                                           target: self,
                                           action: #selector(deleteAction))
-        setToolbarItems([trashButton, spacing, circle], animated: true)
+        let photoButton = UIBarButtonItem(barButtonSystemItem: .camera,
+                                          target: self,
+                                          action: #selector(addImage))
+        setToolbarItems([trashButton, spacing, photoButton, spacing, circle], animated: true)
     }
     
     private func hideSaveButton(param: Bool) {
@@ -192,8 +205,24 @@ final class NoteViewController: UIViewController {
 
 // MARK: - UITextViewDelegate
 extension NoteViewController: UITextViewDelegate {
-    
     func textViewDidChange(_ textView: UITextView) {
         hideSaveButton(param: !textView.text.isEmpty)
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
+extension NoteViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.originalImage] as? UIImage,
+              let url = info[.imageURL] as? URL else { return }
+        imageName = url.lastPathComponent
+        attachmentView.image = selectedImage
+        updateImageHeight()
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
     }
 }

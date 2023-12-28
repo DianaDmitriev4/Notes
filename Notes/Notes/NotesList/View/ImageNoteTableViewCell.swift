@@ -54,12 +54,9 @@ final class ImageNoteTableViewCell: UITableViewCell {
     }
     
     // MARK: - Methods
-    func set(note: Note) {
+    func set(note: Note, image: UIImage) {
         titleLabel.text = note.title
         containerView.backgroundColor = note.category?.color
-        
-        guard let imageData = note.image,
-              let image = UIImage(data: imageData) else { return }
         attachmentView.image = image
     }
     

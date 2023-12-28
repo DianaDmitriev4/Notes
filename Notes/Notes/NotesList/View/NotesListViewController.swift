@@ -72,7 +72,7 @@ final class NotesListViewController: UITableViewController {
     }
     
     private func registerObserver() {
-        NotificationCenter.default.addObserver(self, 
+        NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateData),
                                                name: NSNotification.Name("Update"),
                                                object: nil)
@@ -85,7 +85,7 @@ extension NotesListViewController {
         viewModel?.section.count ?? 0
     }
     
-    override func tableView(_ tableView: UITableView, 
+    override func tableView(_ tableView: UITableView,
                             titleForHeaderInSection section: Int) -> String? {
         viewModel?.section[section].title
     }
@@ -99,23 +99,24 @@ extension NotesListViewController {
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let note = viewModel?.section[indexPath.section].items[indexPath.row] as? Note else { return UITableViewCell() }
         
-        if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleNoteTableViewCell", 
-                                                           for: indexPath) as? SimpleNoteTableViewCell else { return UITableViewCell() }
-            cell.set(note: note)
+        if let imageURL = note.imageURL,
+           let image = viewModel?.getImage(for: imageURL),
+           let cell = tableView.dequeueReusableCell(withIdentifier: "ImageNoteTableViewCell",
+                                                    for: indexPath) as? ImageNoteTableViewCell {
+            cell.set(note: note, image: image)
             return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageNoteTableViewCell", 
-                                                           for: indexPath) as? ImageNoteTableViewCell else { return UITableViewCell() }
+        } else if let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleNoteTableViewCell",
+                                                           for: indexPath) as? SimpleNoteTableViewCell {
             cell.set(note: note)
             return cell
         }
+        return UITableViewCell()
     }
 }
 
 // MARK: - UITableViewDelegate
 extension NotesListViewController {
-    override func tableView(_ tableView: UITableView, 
+    override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
         guard let note = viewModel?.section[indexPath.section].items[indexPath.row] as? Note else { return }
         let noteVC = NoteViewController(viewModel: NoteViewModel(note: note))

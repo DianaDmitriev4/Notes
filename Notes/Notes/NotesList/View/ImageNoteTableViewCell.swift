@@ -1,5 +1,5 @@
 //
-//  SimpleNoteTableViewCell.swift
+//  ImageNoteTableViewCell.swift
 //  Notes
 //
 //  Created by User on 13.12.2023.
@@ -8,14 +8,25 @@
 import SnapKit
 import UIKit
 
-final class SimpleNoteTableViewCell: UITableViewCell {
+final class ImageNoteTableViewCell: UITableViewCell {
     
     //MARK: - GUI variables
     private lazy var containerView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = .lightYellow
+        view.backgroundColor = .lightGreen
         view.layer.cornerRadius = 10
+        
+        return view
+    }()
+    
+    private lazy var attachmentView: UIImageView = {
+        let view = UIImageView()
+        
+        view.layer.cornerRadius = 10
+        view.image = UIImage(named: "audi") ?? .actions
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
         
         return view
     }()
@@ -30,7 +41,7 @@ final class SimpleNoteTableViewCell: UITableViewCell {
     }()
     
     // MARK: - Initialization
-    override init(style: UITableViewCell.CellStyle, 
+    override init(style: UITableViewCell.CellStyle,
                   reuseIdentifier: String?) {
         super.init(style: style,
                    reuseIdentifier: reuseIdentifier)
@@ -43,13 +54,16 @@ final class SimpleNoteTableViewCell: UITableViewCell {
     }
     
     // MARK: - Methods
-    func set(note: Note) {
+    func set(note: Note, image: UIImage) {
         titleLabel.text = note.title
+        containerView.backgroundColor = note.category?.color
+        attachmentView.image = image
     }
     
     // MARK: - Private methods
     private func setupUI() {
         addSubview(containerView)
+        containerView.addSubview(attachmentView)
         containerView.addSubview(titleLabel)
         
         setupConstraints()
@@ -61,8 +75,14 @@ final class SimpleNoteTableViewCell: UITableViewCell {
             make.leading.trailing.equalToSuperview().inset(10)
         }
         
+        attachmentView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(5)
+            make.height.equalTo(100)
+        }
+        
         titleLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(10)
+            make.top.equalTo(attachmentView.snp.bottom).offset(10)
+            make.leading.trailing.bottom.equalToSuperview().inset(10)
         }
     }
 }

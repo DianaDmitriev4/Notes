@@ -10,7 +10,7 @@ import UIKit
 final class NotesListViewController: UITableViewController {
     
     // MARK: Properties
-    var viewModel: NotesListViewModelProtocol?
+    private var viewModel: NotesListViewModelProtocol
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -21,10 +21,17 @@ final class NotesListViewController: UITableViewController {
         setupToolBar()
         registerObserver()
         
-        viewModel?.reloadTable = { [weak self] in
+        viewModel.reloadTable = { [weak self] in
             self?.tableView.reloadData()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     // MARK: - Initialization
     init(viewModel: NotesListViewModelProtocol) {
         self.viewModel = viewModel
@@ -34,12 +41,6 @@ final class NotesListViewController: UITableViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     // MARK: - Private methods
@@ -65,10 +66,11 @@ final class NotesListViewController: UITableViewController {
         let noteVC = NoteViewController(viewModel: NoteViewModel(note: nil))
         noteVC.view.backgroundColor = .white
         navigationController?.pushViewController(noteVC, animated: true)
+        noteVC.isExist = false
     }
     
     @objc private func updateData() {
-        viewModel?.getNotes()
+        viewModel.getNotes()
     }
     
     private func registerObserver() {
@@ -82,25 +84,25 @@ final class NotesListViewController: UITableViewController {
 // MARK: - UITableViewDataSource
 extension NotesListViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel?.section.count ?? 0
+        viewModel.section.count
     }
     
     override func tableView(_ tableView: UITableView,
                             titleForHeaderInSection section: Int) -> String? {
-        viewModel?.section[section].title
+        viewModel.section[section].title
     }
     
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
-        viewModel?.section[section].items.count ?? 0
+        viewModel.section[section].items.count
     }
     
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let note = viewModel?.section[indexPath.section].items[indexPath.row] as? Note else { return UITableViewCell() }
+        guard let note = viewModel.section[indexPath.section].items[indexPath.row] as? Note else { return UITableViewCell() }
         
         if let imageURL = note.imageURL,
-           let image = viewModel?.getImage(for: imageURL),
+           let image = viewModel.getImage(for: imageURL),
            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageNoteTableViewCell",
                                                     for: indexPath) as? ImageNoteTableViewCell {
             cell.set(note: note, image: image)
@@ -118,8 +120,9 @@ extension NotesListViewController {
 extension NotesListViewController {
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
-        guard let note = viewModel?.section[indexPath.section].items[indexPath.row] as? Note else { return }
+        guard let note = viewModel.section[indexPath.section].items[indexPath.row] as? Note else { return }
         let noteVC = NoteViewController(viewModel: NoteViewModel(note: note))
+        noteVC.isExist = true
         navigationController?.pushViewController(noteVC, animated: true)
     }
 }

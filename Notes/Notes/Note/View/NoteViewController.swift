@@ -36,12 +36,9 @@ final class NoteViewController: UIViewController {
     private var imageHeight = 200
     private var imageName: String?
     private var isChange: Bool = false
+    var isExist: Bool = false
     
-    var selectedCategory: ColorCategory? {
-        didSet {
-            isChange = true
-        }
-    }
+    var selectedCategory: ColorCategory?
     
     var viewModel: NoteViewModelProtocol
     
@@ -51,14 +48,14 @@ final class NoteViewController: UIViewController {
         
         configure()
         setupUI()
+        addGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBar.prefersLargeTitles = false
+        // Save button
         navigationItem.rightBarButtonItem?.isHidden = true
-        changeTrashButton()
     }
     
     // MARK: - Initialization
@@ -78,7 +75,7 @@ final class NoteViewController: UIViewController {
     }
     
     @objc private func saveAction() {
-        viewModel.save(with: textView.text, 
+        viewModel.save(with: textView.text,
                        category: selectedCategory,
                        image: attachmentView.image,
                        imageName: imageName)
@@ -98,7 +95,7 @@ final class NoteViewController: UIViewController {
         present(imagePicker, animated: true)
     }
     
-    @objc private func showColors() {
+    @objc private func showSetCategoryAlert() {
         let alert = UIAlertController(title: "Category by color",
                                       message: "Choose the color of your note",
                                       preferredStyle: .actionSheet)
@@ -112,8 +109,11 @@ final class NoteViewController: UIViewController {
         // Create action
         let action = UIAlertAction(title: category.title, style: .default) { [weak self] _ in
             self?.view.backgroundColor = category.color
-            self?.selectedCategory = category
-            self?.hideSaveButton(param: self?.isChange ?? false)
+            if self?.selectedCategory != category {
+                self?.isChange = true
+                self?.selectedCategory = category
+            }
+            self?.isHiddenSaveButton(self?.isChange ?? false)
         }
         // Set
         action.setValue(UIImage(systemName: "circle.fill"), forKey: "image")
@@ -127,16 +127,20 @@ final class NoteViewController: UIViewController {
         selectedCategory = viewModel.note?.category
     }
     
+    private func addGesture() {
+        let recognizer = UITapGestureRecognizer(target: self,
+                                                action: #selector(hideKeyboard))
+        view.addGestureRecognizer(recognizer)
+    }
+    
     private func setupUI() {
         view.addSubview(attachmentView)
         view.addSubview(textView)
         view.backgroundColor = viewModel.note?.category?.color
-        let recognizer = UITapGestureRecognizer(target: self,
-                                                action: #selector(hideKeyboard))
-        view.addGestureRecognizer(recognizer)
         
         textView.layer.borderWidth = textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 1 : 0
         
+        navigationController?.navigationBar.prefersLargeTitles = false
         setupConstraints()
         setupToolbar()
         setupNavigationBar()
@@ -162,15 +166,6 @@ final class NoteViewController: UIViewController {
         }
     }
     
-    private func changeTrashButton() {
-        let trashButton = toolbarItems?.first
-        if textView.layer.borderWidth == 1 {
-            trashButton?.isHidden = true
-        } else {
-            trashButton?.isHidden = false
-        }
-    }
-    
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
                                                             style: .done,
@@ -183,20 +178,25 @@ final class NoteViewController: UIViewController {
         button.setImage(UIImage(systemName: "circle.fill") ?? .add,
                         for: .normal)
         button.tintColor = .red
-        button.addTarget(self, action: #selector(showColors), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showSetCategoryAlert), for: .touchUpInside)
         
         let circle = UIBarButtonItem(customView: button)
         let spacing = UIBarButtonItem(systemItem: .flexibleSpace)
-        let trashButton = UIBarButtonItem(barButtonSystemItem: .trash,
-                                          target: self,
-                                          action: #selector(deleteAction))
         let photoButton = UIBarButtonItem(barButtonSystemItem: .camera,
                                           target: self,
                                           action: #selector(addImage))
-        setToolbarItems([trashButton, spacing, photoButton, spacing, circle], animated: true)
+        // Create trash button if there is a note
+        if isExist {
+            let trashButton = UIBarButtonItem(barButtonSystemItem: .trash,
+                                              target: self,
+                                              action: #selector(deleteAction))
+            setToolbarItems([trashButton, spacing, photoButton, spacing, circle], animated: true)
+        } else {
+            setToolbarItems([spacing, photoButton, spacing, circle], animated: true)
+        }
     }
     
-    private func hideSaveButton(param: Bool) {
+    private func isHiddenSaveButton(_ param: Bool) {
         if param {
             navigationItem.rightBarButtonItem?.isHidden = false
         } else {
@@ -208,7 +208,7 @@ final class NoteViewController: UIViewController {
 // MARK: - UITextViewDelegate
 extension NoteViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        hideSaveButton(param: !textView.text.isEmpty)
+        isHiddenSaveButton(!textView.text.isEmpty)
     }
 }
 
@@ -222,7 +222,7 @@ extension NoteViewController: UIImagePickerControllerDelegate & UINavigationCont
         attachmentView.image = selectedImage
         updateImageHeight()
         isChange = true
-        hideSaveButton(param: isChange)
+        isHiddenSaveButton(isChange)
         dismiss(animated: true)
     }
     

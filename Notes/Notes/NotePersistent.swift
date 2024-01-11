@@ -11,15 +11,22 @@ import Foundation
 final class NotePersistent {
     private static let context = AppDelegate.persistentContainer.viewContext
     
+//    static func changeIsExistProperty(newValue: Bool) {
+//           isExist = newValue
+//       }
+
     static func save(_ note: Note) {
         var entity: NoteEntity?
         if let ent = getEntity(for: note) {
             entity = ent
+//            changeIsExistProperty(newValue: true)
         } else {
+            
             guard let description = NSEntityDescription.entity(forEntityName: "NoteEntity",
                                                                in: context) else { return }
             entity = NoteEntity(entity: description,
                                 insertInto: context)
+//            changeIsExistProperty(newValue: false)
         }
         
         entity?.title = note.title

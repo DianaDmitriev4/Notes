@@ -1,32 +1,21 @@
 //
-//  ImageNoteTableViewCell.swift
+//  SimpleNoteTableViewCell.swift
 //  Notes
 //
 //  Created by User on 13.12.2023.
 //
 
-import SnapKit
 import UIKit
+import SnapKit
 
-final class ImageNoteTableViewCell: UITableViewCell {
+final class SimpleNoteTableViewCell: UITableViewCell {
     
     //MARK: - GUI variables
     private lazy var containerView: UIView = {
         let view = UIView()
         
-        view.backgroundColor = .lightGreen
+        view.backgroundColor = .lightYellow
         view.layer.cornerRadius = 10
-        
-        return view
-    }()
-    
-    private lazy var attachmentView: UIImageView = {
-        let view = UIImageView()
-        
-        view.layer.cornerRadius = 10
-        view.image = UIImage(named: "audi") ?? .actions
-        view.contentMode = .scaleAspectFill
-        view.clipsToBounds = true
         
         return view
     }()
@@ -41,10 +30,8 @@ final class ImageNoteTableViewCell: UITableViewCell {
     }()
     
     // MARK: - Initialization
-    override init(style: UITableViewCell.CellStyle,
-                  reuseIdentifier: String?) {
-        super.init(style: style,
-                   reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.setupUI()
     }
@@ -56,15 +43,12 @@ final class ImageNoteTableViewCell: UITableViewCell {
     // MARK: - Methods
     func set(note: Note) {
         titleLabel.text = note.title
-        guard let imageData = note.image,
-              let image = UIImage(data: imageData) else { return }
-        attachmentView.image = image
+        containerView.backgroundColor = note.category?.color
     }
     
     // MARK: - Private methods
     private func setupUI() {
         addSubview(containerView)
-        containerView.addSubview(attachmentView)
         containerView.addSubview(titleLabel)
         
         setupConstraints()
@@ -76,14 +60,8 @@ final class ImageNoteTableViewCell: UITableViewCell {
             make.leading.trailing.equalToSuperview().inset(10)
         }
         
-        attachmentView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview().inset(5)
-            make.height.equalTo(100)
-        }
-        
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(attachmentView.snp.bottom).offset(10)
-            make.leading.trailing.bottom.equalToSuperview().inset(10)
+            make.edges.equalToSuperview().inset(10)
         }
     }
 }

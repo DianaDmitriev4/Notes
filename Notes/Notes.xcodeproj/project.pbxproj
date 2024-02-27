@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE8E56372B35D52D00338D87 /* NoteEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56352B35D52D00338D87 /* NoteEntity+CoreDataClass.swift */; };
+		CE8E56382B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56362B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift */; };
+		CE8E56412B36C94600338D87 /* NotePersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56402B36C94600338D87 /* NotePersistent.swift */; };
+		CE8E56432B36CB9C00338D87 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E56422B36CB9C00338D87 /* NoteViewModel.swift */; };
+		CECE68612B3C101900EC6813 /* ColorCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE68602B3C101900EC6813 /* ColorCategory.swift */; };
+		CECE68632B3C449700EC6813 /* FileManagerPersistent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE68622B3C449700EC6813 /* FileManagerPersistent.swift */; };
 		CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7802B29B090000A724B /* AppDelegate.swift */; };
 		CEDDC7852B29B090000A724B /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7842B29B090000A724B /* NotesListViewController.swift */; };
 		CEDDC78A2B29B091000A724B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDDC7892B29B091000A724B /* Assets.xcassets */; };
@@ -22,22 +28,36 @@
 		CEDDC7AF2B2B2E86000A724B /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */; };
 		CEDDC7B12B2B2E9B000A724B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7B02B2B2E9B000A724B /* SnapKit */; };
 		CEDDC7B32B2B2E9B000A724B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7B22B2B2E9B000A724B /* SnapKit-Dynamic */; };
+		CEDDC7B92B2FF3D3000A724B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7B82B2FF3D3000A724B /* SnapKit */; };
+		CEDDC7BB2B2FF3D3000A724B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7BA2B2FF3D3000A724B /* SnapKit-Dynamic */; };
+		CEDDC7BD2B2FF3F3000A724B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7BC2B2FF3F3000A724B /* SnapKit */; };
+		CEDDC7BF2B2FF3F3000A724B /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = CEDDC7BE2B2FF3F3000A724B /* SnapKit-Dynamic */; };
+		CEDDC7C12B305E29000A724B /* UIAlertControl + Extens.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7C02B305E29000A724B /* UIAlertControl + Extens.swift */; };
+		CEDDC7C52B3324F9000A724B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEDDC7C32B3324F9000A724B /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE8E56352B35D52D00338D87 /* NoteEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CE8E56362B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CE8E56402B36C94600338D87 /* NotePersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotePersistent.swift; sourceTree = "<group>"; };
+		CE8E56422B36CB9C00338D87 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
+		CECE68602B3C101900EC6813 /* ColorCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCategory.swift; sourceTree = "<group>"; };
+		CECE68622B3C449700EC6813 /* FileManagerPersistent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerPersistent.swift; sourceTree = "<group>"; };
 		CEDDC77D2B29B090000A724B /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDDC7802B29B090000A724B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEDDC7842B29B090000A724B /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
+		CEDDC7842B29B090000A724B /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotesListViewController.swift; path = NotesList/View/NotesListViewController.swift; sourceTree = "<group>"; };
 		CEDDC7892B29B091000A724B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEDDC78C2B29B091000A724B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEDDC78E2B29B091000A724B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEDDC7942B29C12C000A724B /* SimpleNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNoteTableViewCell.swift; sourceTree = "<group>"; };
-		CEDDC7962B29C146000A724B /* ImageNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNoteTableViewCell.swift; sourceTree = "<group>"; };
-		CEDDC7A12B29E3D8000A724B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		CEDDC7A72B29F7AF000A724B /* NotesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewModel.swift; sourceTree = "<group>"; };
+		CEDDC7942B29C12C000A724B /* SimpleNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SimpleNoteTableViewCell.swift; path = NotesList/View/SimpleNoteTableViewCell.swift; sourceTree = "<group>"; };
+		CEDDC7962B29C146000A724B /* ImageNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageNoteTableViewCell.swift; path = NotesList/View/ImageNoteTableViewCell.swift; sourceTree = "<group>"; };
+		CEDDC7A12B29E3D8000A724B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Note.swift; path = NotesList/Model/Note.swift; sourceTree = "<group>"; };
+		CEDDC7A72B29F7AF000A724B /* NotesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotesListViewModel.swift; path = ../ViewModel/NotesListViewModel.swift; sourceTree = "<group>"; };
 		CEDDC7A92B2A035E000A724B /* TableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSection.swift; sourceTree = "<group>"; };
 		CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extens.swift"; sourceTree = "<group>"; };
 		CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		CEDDC7C02B305E29000A724B /* UIAlertControl + Extens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertControl + Extens.swift"; sourceTree = "<group>"; };
+		CEDDC7C42B3324F9000A724B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,13 +68,72 @@
 				CEDDC7B12B2B2E9B000A724B /* SnapKit in Frameworks */,
 				CEDDC79A2B29C688000A724B /* SnapKit in Frameworks */,
 				CEDDC79C2B29C688000A724B /* SnapKit-Dynamic in Frameworks */,
+				CEDDC7BF2B2FF3F3000A724B /* SnapKit-Dynamic in Frameworks */,
+				CEDDC7BD2B2FF3F3000A724B /* SnapKit in Frameworks */,
 				CEDDC7B32B2B2E9B000A724B /* SnapKit-Dynamic in Frameworks */,
+				CEDDC7B92B2FF3D3000A724B /* SnapKit in Frameworks */,
+				CEDDC7BB2B2FF3D3000A724B /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE27DB902B35CDA50049C69C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */,
+				CECE68602B3C101900EC6813 /* ColorCategory.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE8E56342B35D50D00338D87 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E56352B35D52D00338D87 /* NoteEntity+CoreDataClass.swift */,
+				CE8E56362B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift */,
+				CEDDC7C32B3324F9000A724B /* Model.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		CE8E56392B36AEAF00338D87 /* NotesList */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7A32B29E3E7000A724B /* Model */,
+				CEDDC7A42B29E3F9000A724B /* View */,
+				CEDDC7A52B29E494000A724B /* ViewModel */,
+			);
+			path = NotesList;
+			sourceTree = "<group>";
+		};
+		CE8E563E2B36B07100338D87 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				CE27DB902B35CDA50049C69C /* View */,
+				CE8E56442B36CBA100338D87 /* ViewModel */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		CE8E563F2B36B3C000338D87 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */,
+				CEDDC7C02B305E29000A724B /* UIAlertControl + Extens.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CE8E56442B36CBA100338D87 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE8E56422B36CB9C00338D87 /* NoteViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CEDDC7742B29B090000A724B = {
 			isa = PBXGroup;
 			children = (
@@ -76,9 +155,12 @@
 			children = (
 				CEDDC7802B29B090000A724B /* AppDelegate.swift */,
 				CEDDC7A92B2A035E000A724B /* TableViewSection.swift */,
-				CEDDC7B42B2B2ED8000A724B /* Note */,
-				CEDDC7A62B29E4B2000A724B /* NotesList */,
-				CEDDC7AD2B2A1DF6000A724B /* Extension */,
+				CE8E56402B36C94600338D87 /* NotePersistent.swift */,
+				CECE68622B3C449700EC6813 /* FileManagerPersistent.swift */,
+				CE8E563E2B36B07100338D87 /* Note */,
+				CE8E56392B36AEAF00338D87 /* NotesList */,
+				CE8E563F2B36B3C000338D87 /* Extension */,
+				CE8E56342B35D50D00338D87 /* CoreData */,
 				CEDDC7892B29B091000A724B /* Assets.xcassets */,
 				CEDDC78B2B29B091000A724B /* LaunchScreen.storyboard */,
 				CEDDC78E2B29B091000A724B /* Info.plist */,
@@ -92,6 +174,7 @@
 				CEDDC7A12B29E3D8000A724B /* Note.swift */,
 			);
 			name = Model;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		CEDDC7A42B29E3F9000A724B /* View */ = {
@@ -102,6 +185,7 @@
 				CEDDC7962B29C146000A724B /* ImageNoteTableViewCell.swift */,
 			);
 			name = View;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		CEDDC7A52B29E494000A724B /* ViewModel */ = {
@@ -110,40 +194,7 @@
 				CEDDC7A72B29F7AF000A724B /* NotesListViewModel.swift */,
 			);
 			name = ViewModel;
-			sourceTree = "<group>";
-		};
-		CEDDC7A62B29E4B2000A724B /* NotesList */ = {
-			isa = PBXGroup;
-			children = (
-				CEDDC7A52B29E494000A724B /* ViewModel */,
-				CEDDC7A32B29E3E7000A724B /* Model */,
-				CEDDC7A42B29E3F9000A724B /* View */,
-			);
-			name = NotesList;
-			sourceTree = "<group>";
-		};
-		CEDDC7AD2B2A1DF6000A724B /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				CEDDC7AB2B2A1DF2000A724B /* UIColor + Extens.swift */,
-			);
-			name = Extension;
-			sourceTree = "<group>";
-		};
-		CEDDC7B42B2B2ED8000A724B /* Note */ = {
-			isa = PBXGroup;
-			children = (
-				CEDDC7B52B2B338C000A724B /* View */,
-			);
-			name = Note;
-			sourceTree = "<group>";
-		};
-		CEDDC7B52B2B338C000A724B /* View */ = {
-			isa = PBXGroup;
-			children = (
-				CEDDC7AE2B2B2E86000A724B /* NoteViewController.swift */,
-			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +218,10 @@
 				CEDDC79B2B29C688000A724B /* SnapKit-Dynamic */,
 				CEDDC7B02B2B2E9B000A724B /* SnapKit */,
 				CEDDC7B22B2B2E9B000A724B /* SnapKit-Dynamic */,
+				CEDDC7B82B2FF3D3000A724B /* SnapKit */,
+				CEDDC7BA2B2FF3D3000A724B /* SnapKit-Dynamic */,
+				CEDDC7BC2B2FF3F3000A724B /* SnapKit */,
+				CEDDC7BE2B2FF3F3000A724B /* SnapKit-Dynamic */,
 			);
 			productName = Notes;
 			productReference = CEDDC77D2B29B090000A724B /* Notes.app */;
@@ -225,14 +280,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8E56372B35D52D00338D87 /* NoteEntity+CoreDataClass.swift in Sources */,
 				CEDDC7AC2B2A1DF2000A724B /* UIColor + Extens.swift in Sources */,
 				CEDDC7AA2B2A035E000A724B /* TableViewSection.swift in Sources */,
 				CEDDC7A22B29E3D8000A724B /* Note.swift in Sources */,
 				CEDDC7852B29B090000A724B /* NotesListViewController.swift in Sources */,
+				CE8E56432B36CB9C00338D87 /* NoteViewModel.swift in Sources */,
 				CEDDC7AF2B2B2E86000A724B /* NoteViewController.swift in Sources */,
+				CEDDC7C12B305E29000A724B /* UIAlertControl + Extens.swift in Sources */,
+				CECE68632B3C449700EC6813 /* FileManagerPersistent.swift in Sources */,
 				CEDDC7812B29B090000A724B /* AppDelegate.swift in Sources */,
 				CEDDC7952B29C12C000A724B /* SimpleNoteTableViewCell.swift in Sources */,
+				CE8E56382B35D52D00338D87 /* NoteEntity+CoreDataProperties.swift in Sources */,
+				CECE68612B3C101900EC6813 /* ColorCategory.swift in Sources */,
 				CEDDC7972B29C146000A724B /* ImageNoteTableViewCell.swift in Sources */,
+				CEDDC7C52B3324F9000A724B /* Model.xcdatamodeld in Sources */,
+				CE8E56412B36C94600338D87 /* NotePersistent.swift in Sources */,
 				CEDDC7A82B29F7AF000A724B /* NotesListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,7 +542,40 @@
 			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
 		};
+		CEDDC7B82B2FF3D3000A724B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		CEDDC7BA2B2FF3D3000A724B /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		CEDDC7BC2B2FF3F3000A724B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		CEDDC7BE2B2FF3F3000A724B /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEDDC7982B29C688000A724B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		CEDDC7C32B3324F9000A724B /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CEDDC7C42B3324F9000A724B /* Model.xcdatamodel */,
+			);
+			currentVersion = CEDDC7C42B3324F9000A724B /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CEDDC7752B29B090000A724B /* Project object */;
 }
